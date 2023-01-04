@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./Login";
-import BoardGame from "./BoardGame";
+import Login from "./components/pages/Login";
+import BoardGame from "./components/pages/BoardGame";
 
 function App() {
   return (
