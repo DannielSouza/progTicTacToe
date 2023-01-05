@@ -32,8 +32,11 @@ const Login = () => {
     }, 500); */  
   }
 
+
+  socket.on("sendPlayer", (user)=>{
+    socket.emit("waitForPlayers", user)
+  })
   
-  socket.on("start_game", loginSettings)
 
   return (
     <div className="App">

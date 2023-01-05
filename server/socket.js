@@ -1,41 +1,42 @@
-const { io } = require('./http')
+const { io } = require("./http");
 
-const users = []
+const users = [];
 
 io.on("connection", (socket) => {
-
   socket.on("roomEnter", (data) => {
+    socket.join(data.room);
 
-    socket.join(data.room)
+    const userInRoom = users.find(
+      (user) => user.username === data.username && user.room === data.room
+    );
 
-    const userInRoom = users.find(user=> user.username === data.username && user.room === data.room)
-
-    if(userInRoom){
-      userInRoom.socketId = socket.id
-    }
-    else{
-      users.push({
+    if (userInRoom) {
+      userInRoom.socketId = socket.id;
+    } else {
+      const user = {
         socketId: socket.id,
         username: data.username,
-        room: data.room
-      })
+        room: data.room,
+      };
+
+      users.push(user);
     }
+    socket.emit("sendPlayer", {
+      socketId: socket.id,
+      username: data.username,
+      room: data.room,
+    });
   });
 
-  
+  socket.on("waitForPlayers", (data) => {
+    console.log("Esperando jogadores");
+    
+    socket.join(data.room);
+
+    const room = io.sockets.adapter.rooms.get("node")
+
+    if(room.size === 2){
+      console.log("Iniciar Jogo agora.")
+    }
+  });
 });
-
-
-io.on("start_game", async (socket)=>{
-  const connectedSockets = io.sockets.adapter.rooms.get(users.room)
-  const socketRooms = Array.from(socket.room.values()).filter(room => room !== socket.id)
-
-  if(socketRooms.length > 0 || connectedSockets && connectedSockets.size === 2){
-    socket.emit("romm_join_error",{error: "The room is full"})
-  }else{
-    await socket.join(socket.room)
-    socket.emit("room_joined")
-  }
-
-
-})
