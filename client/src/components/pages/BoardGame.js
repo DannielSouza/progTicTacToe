@@ -1,17 +1,25 @@
 import React from 'react'
-const { io } = require("socket.io-client");
-const socket = io("http://localhost:4000");
 
-const BoardGame = () => {
+const BoardGame = ({io, socket}) => {
+  const[player, setPlayer]= React.useState(JSON.parse(localStorage.getItem("player")))
+  const[headerGame, setHeaderGame]= React.useState(null)
 
+  React.useEffect(()=>{
+    socket.emit("pairPlayersInGame", player)
+  },[])
 
-  socket.on("sendMark", (user)=>{
-    console.log(user);
+  socket.once("makeHeaderGame", data=>{
+    setHeaderGame(data)
   })
 
 
   return (
-    <div>BoardGame</div>
+    <section>
+
+
+
+
+    </section>
   )
 }
 

@@ -2,12 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import WaitRoom from "../WaitRoom";
 import style from '../styles/Login.module.css'
-const { io } = require("socket.io-client");
-const socket = io("http://localhost:4000");
 
 
 
-const Login = () => {
+
+const Login = ({io, socket}) => {
 
   const [loginSettings, setLoginSettings] = React.useState(null)
   const [player1, setPlayer1] = React.useState(null)
@@ -22,7 +21,7 @@ const Login = () => {
 
   socket.on("sendPlayer", (user)=>{
     setPlayer1(user)
-    console.log(user);
+    /* console.log(user); */
     socket.emit("waitForPlayers", user)
   })
 
@@ -44,7 +43,7 @@ const Login = () => {
 
   return (
     <>
-      <WaitRoom player={player1} />
+      <WaitRoom player={player1} io={io} socket={socket} />
 
       <section className={style.container}>
 

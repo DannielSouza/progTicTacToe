@@ -1,4 +1,4 @@
-const { io } = require("./http");
+const { io } = require("../http");
 
 const users = [];
 
@@ -54,12 +54,11 @@ io.on("connection", (socket) => {
       userWithoutMark.mark="O"
       roomUsers.push(userWithoutMark)
       socket.emit("sendMark", userWithoutMark)
+      
     }
 
-
-
     if(room.size === 2){
-      console.log(roomUsers)
+      io.to(data.room).emit("startGame")
       console.log("Iniciar Jogo agora.")
     }
   });
