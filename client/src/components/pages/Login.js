@@ -1,12 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import WaitRoom from "../WaitRoom";
+import style from '../styles/Login.module.css'
 const { io } = require("socket.io-client");
 const socket = io("http://localhost:4000");
+
+
 
 const Login = () => {
 
   const [loginSettings, setLoginSettings] = React.useState(null)
+  const [player1, setPlayer1] = React.useState(null)
   const navigate = useNavigate()
 
   function changeSettings({target}){
@@ -15,6 +19,12 @@ const Login = () => {
     })
   }
 
+
+  socket.on("sendPlayer", (user)=>{
+    setPlayer1(user)
+    console.log(user);
+    socket.emit("waitForPlayers", user)
+  })
 
   
 
@@ -26,34 +36,36 @@ const Login = () => {
       return
     }
     socket.emit("roomEnter", loginSettings);
-
-    /* setTimeout(() => {
-      navigate('/game')
-    }, 500); */  
   }
 
 
-  socket.on("sendPlayer", (user)=>{
-    socket.emit("waitForPlayers", user)
-  })
+  
   
 
   return (
-    <div className="App">
-      <form onSubmit={roomEnter}>
+    <>
+      <WaitRoom player={player1} />
+
+      <section className={style.container}>
+
+      
+
+      <form className={style.form} onSubmit={roomEnter}>
         <label>
-          Usuário:
-          <input onChange={changeSettings} name='username' id='username' type="text" />
+          <span>Usuário</span>
+          <input required onChange={changeSettings} name='username' id='username' type="text" />
         </label>
 
         <label>
-          Sala:
-          <input onChange={changeSettings} name='room' id='room' type="text" />
+          <span>Sala</span>
+          <input required onChange={changeSettings} name='room' id='room' type="text" />
         </label>
 
         <button>Entrar</button>
       </form>
-    </div>
+
+      </section>
+    </>
   );
 };
 
