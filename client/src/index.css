@@ -32,3 +32,46 @@ body {
 .Copy-of-Copy-of-Coral-Teal-Gray-3-hsla { color: hsla(176, 100, 40, 1); }
 .Copy-of-Copy-of-Coral-Teal-Gray-4-hsla { color: hsla(176, 83, 69, 1); }
 .Copy-of-Copy-of-Coral-Teal-Gray-5-hsla { color: hsla(180, 4, 47, 1); }
+
+
+.casa{
+  width:200px;
+  height:200px;
+  border: 2px solid white;
+}
+
+.casa0,
+.casa1,
+.casa2{
+  border-top: none;
+  border-bottom: none;
+}
+
+.casa0,
+.casa3,
+.casa6,
+.casa1,
+.casa4,
+.casa7{
+  border-right: none;
+}
+
+.casa0,
+.casa3,
+.casa6{
+  border-left: none;
+}
+
+.casa6,
+.casa7,
+.casa8{
+  border-bottom: none;
+  border-top: none;
+}
+
+
+.casa2,
+.casa5,
+.casa8{
+  border-right: none;
+}

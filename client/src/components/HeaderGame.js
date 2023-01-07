@@ -2,6 +2,10 @@ import React from "react";
 import style from "./styles/HeaderGame.module.css";
 
 const HeaderGame = ({ headerGame }) => {
+
+  console.log(headerGame)
+
+
   return (
     <header className={style.container}>
         <div className={style.itemLeft}>

@@ -7,6 +7,7 @@ const BoardGame = ({ io, socket }) => {
     JSON.parse(localStorage.getItem("player"))
   );
   const [headerGame, setHeaderGame] = React.useState(null);
+  const [board, setBoard] = React.useState(null);
 
   React.useEffect(() => {
     socket.off("pairPlayersInGame");
@@ -14,33 +15,32 @@ const BoardGame = ({ io, socket }) => {
     socket.off("pairPlayersInGame");
   }, []);
 
-  socket.on("makeHeaderGame", (data) => {
-    setHeaderGame(data);
+  socket.on("makeGame", (data) => {
+    setHeaderGame(data.matchUsers);
+    setBoard(data.board)
   });
 
 
   function makeAPlay({target}){
     console.log(target.id)
+
+    socket.off("makeAPlay")
+    socket.emit("makeAPlay", {...player, playedId:target.id})
+    socket.off("makeAPlay")
   }
 
-  return (
+  if(board) return (
     <section>
       {headerGame && <HeaderGame headerGame={headerGame} />}
 
       <div className={style.gameContainer}>
         <div className={style.game}>
 
-            <div className={style.casa1 + ' ' + style.casa} onClick={makeAPlay} id="casa1"></div>
-            <div className={style.casa2 + ' ' + style.casa} onClick={makeAPlay} id="casa2"></div>
-            <div className={style.casa3 + ' ' + style.casa} onClick={makeAPlay} id="casa3"></div>
+          {board.map((boardItem, index)=>{
 
-            <div className={style.casa4 + ' ' + style.casa} onClick={makeAPlay} id="casa4"></div>
-            <div className={style.casa5 + ' ' + style.casa} onClick={makeAPlay} id="casa5"></div>
-            <div className={style.casa6 + ' ' + style.casa} onClick={makeAPlay} id="casa6"></div>
+            return <div className={"casa"+index + " casa"} onClick={makeAPlay} id={index}></div>
+          })}
 
-            <div className={style.casa7 + ' ' + style.casa} onClick={makeAPlay} id="casa7"></div>
-            <div className={style.casa8 + ' ' + style.casa} onClick={makeAPlay} id="casa8"></div>
-            <div className={style.casa9 + ' ' + style.casa} onClick={makeAPlay} id="casa9"></div>
         </div>
       </div>
     </section>
