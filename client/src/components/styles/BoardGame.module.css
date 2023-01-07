@@ -5,55 +5,53 @@
   margin-top: 5rem;
 }
 
-.jogo{
-  width:600px;
-  height:600px;
-  border:solid 3px
-}
-
-.line{
-  height:200px;
-  /* border-bottom: 2px solid white; */
-  display: flex;
+.game{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .casa{
   width:200px;
-  height:100%;
+  height:200px;
   border: 2px solid white;
 }
 
-#casa1,
-#casa2,
-#casa3{
+/* .casa{
+  
+} */
+
+.casa1,
+.casa2,
+.casa3{
   border-top: none;
+  border-bottom: none;
 }
 
-#casa1,
-#casa4,
-#casa7,
-#casa2,
-#casa5,
-#casa8{
+.casa1,
+.casa4,
+.casa7,
+.casa2,
+.casa5,
+.casa8{
   border-right: none;
 }
 
-#casa1,
-#casa4,
-#casa7{
+.casa1,
+.casa4,
+.casa7{
   border-left: none;
 }
 
-#casa7,
-#casa8,
-#casa9{
+.casa7,
+.casa8,
+.casa9{
   border-bottom: none;
   border-top: none;
 }
 
 
-#casa3,
-#casa6,
-#casa9{
+.casa3,
+.casa6,
+.casa9{
   border-right: none;
 }

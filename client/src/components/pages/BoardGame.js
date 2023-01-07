@@ -20,7 +20,7 @@ const BoardGame = ({ io, socket }) => {
 
 
   function makeAPlay({target}){
-    console.log(target.name)
+    console.log(target.id)
   }
 
   return (
@@ -29,21 +29,18 @@ const BoardGame = ({ io, socket }) => {
 
       <div className={style.gameContainer}>
         <div className={style.game}>
-          <div className={style.line}>
-            <div className={style.casa} onClick={makeAPlay} name={"casa1"} id={style.casa1}></div>
-            <div className={style.casa} onClick={makeAPlay} name={"casa2"} id={style.casa2}></div>
-            <div className={style.casa} onClick={makeAPlay} name={"casa3"} id={style.casa3}></div>
-          </div>
-          <div className={style.line}>
-            <div className={style.casa} onClick={makeAPlay} name={"casa4"} id={style.casa4}></div>
-            <div className={style.casa} onClick={makeAPlay} name={"casa5"} id={style.casa5}></div>
-            <div className={style.casa} onClick={makeAPlay} name={"casa6"} id={style.casa6}></div>
-          </div>
-          <div className={style.line}>
-            <div className={style.casa} onClick={makeAPlay} name={"casa7"} id={style.casa7}></div>
-            <div className={style.casa} onClick={makeAPlay} name={"casa8"} id={style.casa8}></div>
-            <div className={style.casa} onClick={makeAPlay} name={"casa9"} id={style.casa9}></div>
-          </div>
+
+            <div className={style.casa1 + ' ' + style.casa} onClick={makeAPlay} id="casa1"></div>
+            <div className={style.casa2 + ' ' + style.casa} onClick={makeAPlay} id="casa2"></div>
+            <div className={style.casa3 + ' ' + style.casa} onClick={makeAPlay} id="casa3"></div>
+
+            <div className={style.casa4 + ' ' + style.casa} onClick={makeAPlay} id="casa4"></div>
+            <div className={style.casa5 + ' ' + style.casa} onClick={makeAPlay} id="casa5"></div>
+            <div className={style.casa6 + ' ' + style.casa} onClick={makeAPlay} id="casa6"></div>
+
+            <div className={style.casa7 + ' ' + style.casa} onClick={makeAPlay} id="casa7"></div>
+            <div className={style.casa8 + ' ' + style.casa} onClick={makeAPlay} id="casa8"></div>
+            <div className={style.casa9 + ' ' + style.casa} onClick={makeAPlay} id="casa9"></div>
         </div>
       </div>
     </section>
