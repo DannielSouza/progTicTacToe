@@ -11,10 +11,12 @@ const WaitRoom = ({ player, io, socket }) => {
     localStorage.setItem("player", JSON.stringify(user));
   });
 
+  socket.off("startGame")
   socket.on("startGame", () => {
     setTimeout(() => {
       navigate("/game");
     }, 1000);
+    socket.off("startGame")
   });
 
 

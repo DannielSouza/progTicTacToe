@@ -22,6 +22,7 @@ const Login = ({io, socket}) => {
   socket.on("sendPlayer", (user)=>{
     setPlayer1(user)
     /* console.log(user); */
+
     socket.emit("waitForPlayers", user)
   })
 
@@ -34,6 +35,7 @@ const Login = ({io, socket}) => {
       console.log("Informe dos dados")
       return
     }
+
     socket.emit("roomEnter", loginSettings);
   }
 
