@@ -16,13 +16,22 @@
   border: 2px solid white;
 }
 
-.mark{
+.markX,
+.markO{
   font-size: 2rem;
   display: flex;
   align-items: center;
   color: white;
   font-family: 'Concert One', cursive;
   font-size: 8.5rem;
+}
+
+.markX{
+  text-shadow: 0px 0px 50px rgba(255, 72, 88, .8);
+}
+
+.markO{
+  text-shadow: 0px 0px 50px rgba(0, 204, 192, .8);
 }
 
 /* .casa0,

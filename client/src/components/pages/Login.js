@@ -21,8 +21,6 @@ const Login = ({io, socket}) => {
 
   socket.on("sendPlayer", (user)=>{
     setPlayer1(user)
-    /* console.log(user); */
-
     socket.emit("waitForPlayers", user)
   })
 

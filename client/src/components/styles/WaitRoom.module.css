@@ -7,6 +7,7 @@
 
   align-items: center;
   flex-direction: column;
+  text-align: center;
 }
 
 .infoContainer{
@@ -24,7 +25,6 @@
 
 .textRoom{
   position: absolute;
-  top: -15px;
   text-align: center;
 
   font-size: 1.1rem;

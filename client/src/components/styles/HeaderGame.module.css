@@ -23,8 +23,8 @@
 .itemLeft span{
   font-family: 'Concert One', cursive;
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   padding: 5px;
   align-items: center;
   left: -30px;
@@ -40,8 +40,8 @@
 .itemRight span{
   font-family: 'Concert One', cursive;
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   padding: 5px;
   align-items: center;
   right: -30px;
@@ -52,4 +52,23 @@
   justify-content: center;
   font-size: 1.8rem;
   color: #72F2EB;
+}
+
+.currentPlayer{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+  font-family: 'Concert One', cursive;
+  width: 120px;
+  height: 55px;
+  font-size: 1.8rem;
+  border-radius: 0 0 5px 5px;
+  background: white;
+  text-align: center;
+}
+
+.currentPlayer span{
+  font-size: .8rem;
+  margin-top: -2rem;
 }

@@ -26,29 +26,27 @@ const BoardGame = ({ io, socket }) => {
     socket.off("makeAPlay");
   }
 
-  /* socket.off("newBoard") */
   socket.on("newBoard", (newBoard) => {
-    console.log("chegou");
     setBoard(newBoard);
   });
-  /* socket.off("newBoard") */
 
   if (board)
     return (
       <section>
-        {headerGame && <HeaderGame headerGame={headerGame} />}
+        {headerGame && <HeaderGame socket={socket} headerGame={headerGame} />}
 
         <div className={style.gameContainer}>
           <div className={style.game}>
             {board.map((boardItem, index) => {
               return(
               <div
+                key={index}
                 className={"casa" + index + " casa"}
                 onClick={makeAPlay}
                 id={index}
               >
-                {boardItem === "X" &&<span className={style.mark}>X</span>}
-                {boardItem === "O" &&<span className={style.mark}>O</span>}
+                {boardItem === "X" &&<span className={style.markX}>X</span>}
+                {boardItem === "O" &&<span className={style.markO}>O</span>}
               </div>)
             })}
           </div>
