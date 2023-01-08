@@ -16,6 +16,15 @@
   border: 2px solid white;
 }
 
+.mark{
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: 'Concert One', cursive;
+  font-size: 8.5rem;
+}
+
 /* .casa0,
 .casa1,
 .casa2{

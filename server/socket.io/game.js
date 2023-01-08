@@ -1,15 +1,15 @@
 const { io } = require("../http");
 
 const players = []
-const playTurn = "X"
-const board = [0,0,0,0,0,0,0,0,0]
+let playTurn = "X"
+let board
  
 io.on("connect",(socket)=>{
 
   socket.on("pairPlayersInGame", (data)=>{
     players.push(data)
 
-    const matchUsers = []
+    let matchUsers = []
     matchUsers.push(players[0])
 
     players.map((player)=>{
@@ -18,13 +18,16 @@ io.on("connect",(socket)=>{
       }
     })
     io.to(data.room).emit("makeGame", {matchUsers, board})
+    board = [0,0,0,0,0,0,0,0,0]
   })
 
 
   socket.on("makeAPlay", data=>{
-
+    console.log(data)
     if(data.mark === playTurn){
-
+      if(board[data.playedId] === 0)board[data.playedId] = data.mark
+      playTurn === "X" ? playTurn = "O" : playTurn = "X"
+      io.to(data.room).emit("newBoard", board)
     }
 
   })

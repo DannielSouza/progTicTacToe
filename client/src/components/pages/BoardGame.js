@@ -17,34 +17,44 @@ const BoardGame = ({ io, socket }) => {
 
   socket.on("makeGame", (data) => {
     setHeaderGame(data.matchUsers);
-    setBoard(data.board)
+    setBoard(data.board);
   });
 
-
-  function makeAPlay({target}){
-    console.log(target.id)
-
-    socket.off("makeAPlay")
-    socket.emit("makeAPlay", {...player, playedId:target.id})
-    socket.off("makeAPlay")
+  function makeAPlay({ target }) {
+    socket.off("makeAPlay");
+    socket.emit("makeAPlay", { ...player, playedId: target.id });
+    socket.off("makeAPlay");
   }
 
-  if(board) return (
-    <section>
-      {headerGame && <HeaderGame headerGame={headerGame} />}
+  /* socket.off("newBoard") */
+  socket.on("newBoard", (newBoard) => {
+    console.log("chegou");
+    setBoard(newBoard);
+  });
+  /* socket.off("newBoard") */
 
-      <div className={style.gameContainer}>
-        <div className={style.game}>
+  if (board)
+    return (
+      <section>
+        {headerGame && <HeaderGame headerGame={headerGame} />}
 
-          {board.map((boardItem, index)=>{
-
-            return <div className={"casa"+index + " casa"} onClick={makeAPlay} id={index}></div>
-          })}
-
+        <div className={style.gameContainer}>
+          <div className={style.game}>
+            {board.map((boardItem, index) => {
+              return(
+              <div
+                className={"casa" + index + " casa"}
+                onClick={makeAPlay}
+                id={index}
+              >
+                {boardItem === "X" &&<span className={style.mark}>X</span>}
+                {boardItem === "O" &&<span className={style.mark}>O</span>}
+              </div>)
+            })}
+          </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
 };
 
 export default BoardGame;
