@@ -52,12 +52,12 @@ const Login = ({io, socket}) => {
       <form className={style.form} onSubmit={roomEnter}>
         <label>
           <span>Usuário</span>
-          <input required onChange={changeSettings} name='username' id='username' type="text" />
+          <input autoComplete="off" required onChange={changeSettings} name='username' id='username' type="text" />
         </label>
 
         <label>
           <span>Sala</span>
-          <input required onChange={changeSettings} name='room' id='room' type="text" />
+          <input autoComplete="off" required onChange={changeSettings} name='room' id='room' type="text" />
         </label>
 
         <button>Entrar</button>

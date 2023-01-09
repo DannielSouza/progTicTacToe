@@ -15,7 +15,7 @@ const WaitRoom = ({ player, io, socket }) => {
   socket.on("startGame", () => {
     setTimeout(() => {
       navigate("/game");
-    }, 1000);
+    }, 600);
     socket.off("startGame")
   });
 

@@ -8,23 +8,26 @@ const BoardGame = ({ io, socket }) => {
   );
   const [headerGame, setHeaderGame] = React.useState(null);
   const [board, setBoard] = React.useState(null);
+  const [playTurn, setPlayTurn] = React.useState(null)
 
-  React.useEffect(() => {
-    socket.off("pairPlayersInGame");
-    socket.emit("pairPlayersInGame", player);
-    socket.off("pairPlayersInGame");
-  }, []);
 
   socket.on("makeGame", (data) => {
     setHeaderGame(data.matchUsers);
     setBoard(data.board);
+
+    data.matchUsers.forEach(playerWithMark=>{
+      if(playerWithMark.socketId === player.socketId) setPlayer(playerWithMark)
+    })
+
   });
+
 
   function makeAPlay({ target }) {
     socket.off("makeAPlay");
-    socket.emit("makeAPlay", { ...player, playedId: target.id });
+    socket.emit("makeAPlay", { ...player, playedId: target.id, thisBoard: board, playTurn});
     socket.off("makeAPlay");
   }
+
 
   socket.on("newBoard", (newBoard) => {
     setBoard(newBoard);
@@ -33,7 +36,7 @@ const BoardGame = ({ io, socket }) => {
   if (board)
     return (
       <section>
-        {headerGame && <HeaderGame socket={socket} headerGame={headerGame} />}
+        {headerGame && <HeaderGame setPlayTurn={setPlayTurn} socket={socket} headerGame={headerGame} />}
 
         <div className={style.gameContainer}>
           <div className={style.game}>

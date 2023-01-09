@@ -1,12 +1,17 @@
 import React from "react";
 import style from "./styles/HeaderGame.module.css";
 
-const HeaderGame = ({ headerGame, socket }) => {
+const HeaderGame = ({ headerGame, socket, setPlayTurn }) => {
   const [player1, setPlayer1] = React.useState();
   const [player2, setPlayer2] = React.useState();
   const [currentPlay, setCurrentPlay] = React.useState("X");
 
   console.log({headerGame})
+
+
+  React.useEffect(()=>{
+    setPlayTurn("X")
+  },[])
 
 
   React.useEffect(() => {
@@ -21,7 +26,11 @@ const HeaderGame = ({ headerGame, socket }) => {
 
 
   socket.on("recivePlay", (data)=>{
+    console.log(data)
+
+
     setCurrentPlay(data)
+    setPlayTurn(data)
   })
 
 
