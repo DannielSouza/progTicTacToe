@@ -33,7 +33,6 @@ io.on("connection", (socket) => {
   const roomUsers = []
 
   socket.on("waitForPlayers", (data) => {
-    console.log("Esperando jogadores");
     socket.join(data.room);
     const room = io.sockets.adapter.rooms.get(data.room)
     let userWithoutMark
@@ -61,7 +60,6 @@ io.on("connection", (socket) => {
       let playTurn = "X"
 
       io.to(data.room).emit("startGame")
-      console.log("Iniciar Jogo agora.")
 
       const clients = io.sockets.adapter.rooms.get(data.room);
       let roomPlayersId = []
