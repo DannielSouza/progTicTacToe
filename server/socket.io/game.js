@@ -43,6 +43,20 @@ io.on("connect", (socket) => {
             }, 5000);
           }
         })
+
+
+        /* CHECK IF THERE'S NO MORE PLAYS */
+
+        if(!board.includes(0)){
+          io.to(data.room).emit("noMoreWinners", {username: "noWinner", mark: "noMark"})
+          
+
+          setTimeout(() => {
+            io.to(data.room).emit("backHome")
+          }, 5000);
+        }
+
+
       }
     }
   });

@@ -40,6 +40,11 @@ const BoardGame = ({ io, socket }) => {
     setWinner(winner);
   });
 
+  socket.on("noMoreWinners", (data) => {
+    setWinner(data);
+  });
+
+
   if (board)
     return (
       <section>
