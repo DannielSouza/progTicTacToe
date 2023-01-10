@@ -26,8 +26,6 @@ const WinnerModal = ({ winnerName, winnerMark, socket }) => {
           <button onClick={backHome}>Inicio</button>
         </div>
       )}
-
-      
     </section>
   );
 };
