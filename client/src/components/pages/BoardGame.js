@@ -1,6 +1,7 @@
 import React from "react";
 import HeaderGame from "../HeaderGame";
 import style from "../styles/BoardGame.module.css";
+import WinnerModal from "../WinnerModal";
 
 const BoardGame = ({ io, socket }) => {
   const [player, setPlayer] = React.useState(
@@ -9,6 +10,7 @@ const BoardGame = ({ io, socket }) => {
   const [headerGame, setHeaderGame] = React.useState(null);
   const [board, setBoard] = React.useState(null);
   const [playTurn, setPlayTurn] = React.useState(null)
+  const [winner, setWinner] = React.useState(null)
 
 
   socket.on("makeGame", (data) => {
@@ -33,10 +35,17 @@ const BoardGame = ({ io, socket }) => {
     setBoard(newBoard);
   });
 
+
+  socket.on("winner", (winner) => {
+    setWinner(winner);
+  });
+
   if (board)
     return (
       <section>
         {headerGame && <HeaderGame setPlayTurn={setPlayTurn} socket={socket} headerGame={headerGame} />}
+        {winner && <WinnerModal winnerName={winner.username} winnerMark={winner.mark}/> }
+
 
         <div className={style.gameContainer}>
           <div className={style.game}>

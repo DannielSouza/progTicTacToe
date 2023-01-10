@@ -6,9 +6,6 @@ const HeaderGame = ({ headerGame, socket, setPlayTurn }) => {
   const [player2, setPlayer2] = React.useState();
   const [currentPlay, setCurrentPlay] = React.useState("X");
 
-  console.log({headerGame})
-
-
   React.useEffect(()=>{
     setPlayTurn("X")
   },[])
@@ -26,9 +23,6 @@ const HeaderGame = ({ headerGame, socket, setPlayTurn }) => {
 
 
   socket.on("recivePlay", (data)=>{
-    console.log(data)
-
-
     setCurrentPlay(data)
     setPlayTurn(data)
   })

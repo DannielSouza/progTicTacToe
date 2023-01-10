@@ -1,0 +1,84 @@
+.container {
+  position: fixed;
+  background: rgba(0, 0, 0, .8);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.container span{
+  text-transform: capitalize;
+}
+
+.itemContainerX h1,
+.itemContainerO h1{
+  font-family: 'Concert One', cursive;
+  font-size: 3.5rem;
+  animation: animaAppear .8s forwards ease-in-out;
+}
+
+.itemContainerX p,
+.itemContainerO p{
+  animation: animaAppear 1s forwards ease-in-out;
+}
+
+.itemContainerX,
+.itemContainerO{
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+}
+
+
+.itemContainerX h1{
+  text-shadow: 0px 0px 80px rgba(255, 72, 88, 1);
+}
+
+.itemContainerO h1{
+  text-shadow: 0px 0px 80px rgba(0, 204, 192, 1);
+}
+
+
+.itemContainerX button,
+.itemContainerO button{
+  animation: animaAppear 1.5s forwards ease-in-out;
+  animation-timing-function: .8s;
+  margin-top: 2rem;
+  font-family: 'Poppins', sans-serif;
+  width: 80px;
+  height: 30px;  
+  background: white;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.itemContainerX button:hover{
+  color: white;
+  background:  rgba(255, 72, 88, 1);
+  box-shadow: 0px 0px 20px 5px  rgba(255, 72, 88, 1);
+}
+
+.itemContainerO button:hover{
+  color: white;
+  background:  rgba(0, 204, 192, 1);
+  box-shadow: 0px 0px 20px 5px  rgba(0, 204, 192, 1);
+}
+
+@keyframes animaAppear{
+  from{
+    opacity: 0;
+    transform: scale(.9);
+  }
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
+}
