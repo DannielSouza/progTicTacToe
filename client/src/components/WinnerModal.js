@@ -2,13 +2,17 @@ import React from "react";
 import style from "./styles/WinnerModal.module.css";
 import { useNavigate } from "react-router-dom";
 
-const WinnerModal = ({ winnerName, winnerMark }) => {
+const WinnerModal = ({ winnerName, winnerMark, socket }) => {
   const navigate = useNavigate();
 
 
   function backHome(){
-    navigate("/")
+    window.location.href= "/"
   }
+
+  socket.on("backHome", (winner) => {
+    window.location.href= "/"
+  });
 
   return (
     <section className={style.container}>

@@ -1,8 +1,6 @@
 const { io } = require("../http");
 
-/* const players = []; */
-let playTurn;
-
+let playTurn
 const possibleWins = [
   [0, 1, 2],
   [3, 4, 5],
@@ -31,18 +29,20 @@ io.on("connect", (socket) => {
         data.playTurn === "X" ? (futurePlay = "O") : (futurePlay = "X");
 
 
+        io.to(data.room).emit("newBoard", board);
+        io.to(data.room).emit("recivePlay", futurePlay);
+
         /* CHECK IF THERE'S A WINNER */
 
         possibleWins.forEach(possibility=>{
           if(board[possibility[0]] === data.mark && board[possibility[1]] === data.mark && board[possibility[2]] === data.mark){
             io.to(data.room).emit("winner", {username: data.username, mark: data.mark});
-            console.log(data.username + " ganhou!")
+            
+            setTimeout(() => {
+              io.to(data.room).emit("backHome")
+            }, 5000);
           }
         })
-
-
-        io.to(data.room).emit("newBoard", board);
-        io.to(data.room).emit("recivePlay", futurePlay);
       }
     }
   });
