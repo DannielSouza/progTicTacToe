@@ -44,7 +44,7 @@ const BoardGame = ({ io, socket }) => {
     return (
       <section>
         {headerGame && <HeaderGame setPlayTurn={setPlayTurn} socket={socket} headerGame={headerGame} />}
-        {winner && <WinnerModal socket={socket} winnerName={winner.username} winnerMark={winner.mark}/> }
+        {winner && <WinnerModal player={player} socket={socket} winnerName={winner.username} winnerMark={winner.mark}/> }
 
 
         <div className={style.gameContainer}>

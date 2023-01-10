@@ -3,6 +3,7 @@
   justify-content: center;
   align-content: center;
   margin-top: 5rem;
+  cursor: default;
 }
 
 .game{
@@ -27,45 +28,27 @@
 }
 
 .markX{
-  text-shadow: 0px 0px 50px rgba(255, 72, 88, .8);
+  animation: animaMarkX .8s forwards ease-in;
 }
 
 .markO{
-  text-shadow: 0px 0px 50px rgba(0, 204, 192, .8);
+  animation: animaMarkO .8s forwards ease-in;
 }
 
-/* .casa0,
-.casa1,
-.casa2{
-  border-top: none;
-  border-bottom: none;
+@keyframes animaMarkX {
+  from{
+    text-shadow:none;
+  }
+  to{
+    text-shadow: 0px 0px 50px rgba(255, 72, 88, .8);
+  }
 }
 
-.casa0,
-.casa3,
-.casa6,
-.casa1,
-.casa4,
-.casa7{
-  border-right: none;
+@keyframes animaMarkO {
+  from{
+    text-shadow:none;
+  }
+  to{
+    text-shadow: 0px 0px 50px rgba(0, 204, 192, .8);
+  }
 }
-
-.casa0,
-.casa3,
-.casa6{
-  border-left: none;
-}
-
-.casa6,
-.casa7,
-.casa8{
-  border-bottom: none;
-  border-top: none;
-}
-
-
-.casa2,
-.casa5,
-.casa8{
-  border-right: none;
-} */
