@@ -4,7 +4,7 @@
  <br>
  
  
-* Quem na infancia nunca desafiou aquele amigo para um jogo da velha? Para relembrar os velhos e bons momentos resolvi criar o bom e velho jogo da velha. Usando o Socket.io fiz um sistema de usuários e salas, e assim que tem dois players na mesma sala, o jogo inicia automaticamente. Além disso, obiamente para ser um jogo online é preciso que mais de duas salas sejam criadas, e assim foi feito! Você pode ver o pareamento de salas logo abaixo!
+* Quem na infancia nunca desafiou aquele amigo para um jogo da velha? Para relembrar os velhos e bons momentos resolvi criar o bom e velho jogo da velha. Usando o Socket.io fiz um sistema de usuários e salas, e assim que tem dois players na mesma sala, o jogo inicia automaticamente. Além disso, obviamente para ser um jogo online é preciso que mais de duas salas sejam criadas, e assim foi feito! Você pode ver o pareamento de salas logo abaixo!
 
  
  <img src="https://user-images.githubusercontent.com/104663666/211664366-a99dbee8-c15e-474b-b9a7-f3dbcf88803c.gif"/>
